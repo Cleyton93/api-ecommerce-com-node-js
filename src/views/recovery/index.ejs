@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recuperar senha</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container h-100">
+      <div class="h-100 w-100 d-flex align-items-center justify-content-center">  
+        <form
+          method="POST"
+          class="d-flex flex-direction-column form-recovery"
+          action="<%= `${process.env.API_URL}users/recuperar-senha` %>"
+        >
+          <h1 class="title">Recuperar Senha</h1>
+
+          <div class="content-alert">
+            <% if (error)  { %>
+
+              <div class="alert-danger">
+                <%= error %>
+              </div>
+
+            <% } else if (success) { %>
+
+              <div class="alert-success">
+                <%= success %>
+              </div>
+
+            <% } %>
+          </div>
+
+          <label for="email" class="mb">
+            Digite seu email para receber as instruções de como reiniciar a sua 
+            senha.
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="input input-recovery mb"
+            placeholder="Digite seu E-mail vinculado a conta"
+          />
+  
+          <button class="btn btn-confirm w-100 btn-recovery" type="submit">
+            Recuperar Senha
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

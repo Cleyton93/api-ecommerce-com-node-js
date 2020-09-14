@@ -14,11 +14,11 @@ import StoresController from '../controllers/StoresController.js';
 const router = express.Router();
 const storesController = new StoresController();
 
-router.get('/', storesController.getAll);
+router.get('/', storesController.getAll); // testado
 
-router.get('/:id', getByIdValidation, storesController.getById);
+router.get('/:id', getByIdValidation, storesController.getById); // testado
 
-router.post('/', auth.required, addValidation, storesController.add);
+router.post('/', auth.required, addValidation, storesController.add); // testado
 
 router.put(
   '/',
@@ -26,7 +26,7 @@ router.put(
   storeAdminValidation,
   updateValidation,
   storesController.update,
-);
+); // testado
 
 router.delete(
   '/',
@@ -34,6 +34,6 @@ router.delete(
   removeValidation,
   storeAdminValidation,
   storesController.remove,
-);
+); // testado
 
 export default router;

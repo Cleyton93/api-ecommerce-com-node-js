@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
+import moment from 'moment';
 
 const secret = process.env.SECRET;
 
@@ -86,7 +87,7 @@ UsersSchema.methods.sendAuthJSON = function () {
 UsersSchema.methods.generateTokenForPasswordRecovery = function () {
   this.recovery = {
     token: crypto.randomBytes(16).toString('hex'),
-    date: new Date(new Date().getTime() * 24 * 60 * 60 * 1000),
+    date: moment(new Date()).add('24', 'hours').format(),
   };
 
   return this.recovery;

@@ -35,13 +35,23 @@ export const addValidation = validate({
   body: Joi.object({
     name: Joi.string().required(),
     cnpj: Joi.string()
-      .pattern(new RegExp(/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/))
+      .pattern(new RegExp(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/))
       .required(),
     email: Joi.string().email().required(),
-    phones: Joi.array().items(Joi.string().required()).required(),
+    phones: Joi.array()
+      .items(
+        Joi.string()
+          .pattern(
+            new RegExp(
+              /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})-?(\d{4}))$/,
+            ),
+          )
+          .required(),
+      )
+      .required(),
     address: Joi.object({
       location: Joi.string().required(),
-      number: Joi.string().required(),
+      number: Joi.number().required(),
       complement: Joi.string().optional(),
       neighborhood: Joi.string().required(),
       city: Joi.string().required(),
@@ -59,13 +69,23 @@ export const updateValidation = validate({
   body: Joi.object({
     name: Joi.string().optional(),
     cnpj: Joi.string()
-      .pattern(new RegExp(/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/))
+      .pattern(new RegExp(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/))
       .optional(),
     email: Joi.string().email().optional(),
-    phones: Joi.array().items(Joi.string().required()).optional(),
+    phones: Joi.array()
+      .items(
+        Joi.string()
+          .pattern(
+            new RegExp(
+              /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})-?(\d{4}))$/,
+            ),
+          )
+          .required(),
+      )
+      .optional(),
     address: Joi.object({
       location: Joi.string().required(),
-      number: Joi.string().required(),
+      number: Joi.number().required(),
       complement: Joi.string().optional(),
       neighborhood: Joi.string().required(),
       city: Joi.string().required(),

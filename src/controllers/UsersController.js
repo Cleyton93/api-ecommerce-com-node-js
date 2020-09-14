@@ -194,11 +194,11 @@ class UsersController {
 
       const data = {
         error: null,
-        succes: null,
+        success: null,
         token: user.recovery.token,
       };
 
-      return res.render('recovery/create-new-passord', data);
+      return res.render('recovery/create-new-password', data);
     } catch (err) {
       return next(err);
     }
@@ -212,6 +212,7 @@ class UsersController {
       const data = {
         error: 'Preencha novamente com sua nova senha.',
         sucess: null,
+        token,
       };
 
       return res.render('recovery/create-new-password', data);
@@ -230,8 +231,10 @@ class UsersController {
         return res.render('recovery/create-new-password', data);
       }
 
-      await user.fnalizeTheToken();
+      await user.finalizeTheToken();
       await user.setPass(pass);
+
+      await user.save();
 
       const data = {
         error: null,
