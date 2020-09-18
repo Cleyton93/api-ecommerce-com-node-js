@@ -13,6 +13,8 @@
     },
     "rules": {
     "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "no-shadow": "off",
     "func-names": "off",
     "no-underscore-dangle": "off",
     "import/extensions": "off",

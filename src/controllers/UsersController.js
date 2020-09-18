@@ -107,7 +107,7 @@ class UsersController {
       if (!(await user.passValidator(pass)))
         return res.status(401).json({ error: 'Senha inválida.' });
 
-      return res.json({ user: user.sendAuthJSON() });
+      return res.json({ user: await user.sendAuthJSON() });
     } catch (err) {
       return next(err);
     }

@@ -6,9 +6,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import compression from 'compression';
 
-import usersRouters from './routes/users.js';
-import storesRouter from './routes/stores.js';
-import clientsRouter from './routes/clients.js';
+import * as router from './routes/index.js';
 
 dotenv.config();
 
@@ -34,9 +32,13 @@ app.use(cors());
 
 app.use(compression());
 
-app.use('/users', usersRouters);
-app.use('/stores', storesRouter);
-app.use('/clients', clientsRouter);
+app.use('/usuarios', router.usersRouter);
+app.use('/lojas', router.storesRouter);
+app.use('/clientes', router.clientsRouter);
+app.use('/categorias', router.categoriesRouter);
+app.use('/produtos', router.productsRouter);
+app.use('/variacoes', router.variationsRouter);
+app.use('/avaliacoes', router.ratingsRouter);
 
 // ROUTE 404
 app.use((req, res, next) => {

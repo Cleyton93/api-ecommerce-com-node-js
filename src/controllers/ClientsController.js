@@ -145,11 +145,11 @@ class ClientsController {
         address,
         dateOfBirth,
         store,
-        user: user._id,
+        user: String(user._id),
       });
 
-      await user.save();
       await client.save();
+      await user.save();
 
       return res.json({
         client: { ...client._doc, email: user.email },

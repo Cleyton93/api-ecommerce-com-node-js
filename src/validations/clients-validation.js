@@ -39,7 +39,7 @@ export const updateAdminValidation = validate({
     email: Joi.string().email().optional(),
     address: Joi.object({
       location: Joi.string().required(),
-      number: Joi.string().required(),
+      number: Joi.number().required(),
       complement: Joi.string().optional(),
       neighborhood: Joi.string().required(),
       city: Joi.string().required(),
@@ -69,7 +69,7 @@ export const addValidation = validate({
     email: Joi.string().email().required(),
     address: Joi.object({
       location: Joi.string().required(),
-      number: Joi.string().required(),
+      number: Joi.number().required(),
       complement: Joi.string().optional(),
       neighborhood: Joi.string().required(),
       city: Joi.string().required(),
@@ -96,7 +96,7 @@ export const updateValidation = validate({
     email: Joi.string().email().optional(),
     address: Joi.object({
       location: Joi.string().required(),
-      number: Joi.string().required(),
+      number: Joi.number().required(),
       complement: Joi.string().optional(),
       neighborhood: Joi.string().required(),
       city: Joi.string().required(),

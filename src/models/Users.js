@@ -3,6 +3,9 @@ import uniqueValidator from 'mongoose-unique-validator';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import moment from 'moment';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const secret = process.env.SECRET;
 

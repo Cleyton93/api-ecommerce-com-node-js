@@ -1,21 +1,11 @@
 import express from 'express';
 
+import ClientsController from '../controllers/ClientsController.js';
+
 import auth from '../config/auth.js';
 
+import * as validate from '../validations/clients-validation.js';
 import storeAdminValidation from '../validations/stores-validation.js';
-
-import {
-  getAllValidation,
-  searchValidation,
-  getClientByIdValidation,
-  updateAdminValidation,
-  getClientValidation,
-  addValidation,
-  updateValidation,
-  removeValidation,
-} from '../validations/clients-validation.js';
-
-import ClientsController from '../controllers/ClientsController.js';
 
 const router = express.Router();
 const clientsController = new ClientsController();
@@ -25,7 +15,7 @@ router.get(
   '/',
   auth.required,
   storeAdminValidation,
-  getAllValidation,
+  validate.getAllValidation,
   clientsController.getAll,
 ); // testado
 
@@ -40,7 +30,7 @@ router.get(
   '/search/:search',
   auth.required,
   storeAdminValidation,
-  searchValidation,
+  validate.searchValidation,
   clientsController.search,
 ); // testado
 
@@ -55,7 +45,7 @@ router.get(
   '/admin/:id',
   auth.required,
   storeAdminValidation,
-  getClientByIdValidation,
+  validate.getClientByIdValidation,
   clientsController.getClientById,
 ); // testado
 
@@ -63,7 +53,7 @@ router.put(
   '/admin/:id',
   auth.required,
   storeAdminValidation,
-  updateAdminValidation,
+  validate.updateAdminValidation,
   clientsController.updateAdmin,
 ); // testado
 
@@ -71,14 +61,24 @@ router.put(
 router.get(
   '/show',
   auth.required,
-  getClientValidation,
+  validate.getClientValidation,
   clientsController.getClient, // testado
 );
 
-router.post('/', addValidation, clientsController.add); // testado
+router.post('/', validate.addValidation, clientsController.add); // testado
 
-router.put('/', auth.required, updateValidation, clientsController.update); // testado
+router.put(
+  '/',
+  auth.required,
+  validate.updateValidation,
+  clientsController.update,
+); // testado
 
-router.delete('/', auth.required, removeValidation, clientsController.remove); // testado
+router.delete(
+  '/',
+  auth.required,
+  validate.removeValidation,
+  clientsController.remove,
+); // testado
 
 export default router;

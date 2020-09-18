@@ -18,7 +18,7 @@ const CategoriesSchema = new mongoose.Schema(
     },
     availability: {
       type: Boolean,
-      required: true,
+      default: true,
     },
     products: {
       type: [
