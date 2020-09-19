@@ -24,13 +24,13 @@ router.put(
 
 router.delete('/', auth.required, usersController.remove); // testado
 
-router.get('/recuperar-senha', usersController.showRecovery);
+router.get('/recuperar-senha', usersController.showRecovery); // testado
 
-router.post('/recuperar-senha', usersController.createRecovery);
+router.post('/recuperar-senha', usersController.createRecovery); // testado
 
-router.get('/senha-recuperada', usersController.showCompleteRecovery);
+router.get('/senha-recuperada', usersController.showCompleteRecovery); // testado
 
-router.post('/senha-recuperada', usersController.completeRecovery);
+router.post('/senha-recuperada', usersController.completeRecovery); // testado
 
 router.get(
   '/:id',

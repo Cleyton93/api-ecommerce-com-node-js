@@ -39,6 +39,7 @@ app.use('/categorias', router.categoriesRouter);
 app.use('/produtos', router.productsRouter);
 app.use('/variacoes', router.variationsRouter);
 app.use('/avaliacoes', router.ratingsRouter);
+app.use('/pedidos', router.requestsRouter);
 
 // ROUTE 404
 app.use((req, res, next) => {

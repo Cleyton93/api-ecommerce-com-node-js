@@ -5,6 +5,7 @@ import categoriesRouter from './categories.js';
 import productsRouter from './products.js';
 import variationsRouter from './variations.js';
 import ratingsRouter from './ratings.js';
+import requestsRouter from './requests.js';
 
 export {
   usersRouter,
@@ -14,4 +15,5 @@ export {
   productsRouter,
   variationsRouter,
   ratingsRouter,
+  requestsRouter,
 };
