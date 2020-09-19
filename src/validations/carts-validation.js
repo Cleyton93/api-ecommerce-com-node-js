@@ -1,5 +1,5 @@
-import Products from '../../models/products.js';
-import Variations from '../../models/variations.js';
+import Products from '../models/Products.js';
+import Variations from '../models/Variations.js';
 
 const getCartValue = (cart) => {
   const total = {

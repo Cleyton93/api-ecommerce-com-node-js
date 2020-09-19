@@ -4,17 +4,14 @@ export const availableQuantityValidation = async (_cart) => {
   let everyoneHasQuantityAvailable = true;
 
   try {
-    const cart = [];
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const item of _cart) {
-      cart.push({
-        ...item,
-        variation: Variations.findById(item.variation._id || item.variation),
-      });
-    }
-
-    await Promise.all(cart);
+    const cart = await Promise.all(
+      _cart.map(async (item) => {
+        return {
+          ...item,
+          variation: await Variations.findById(item.variation),
+        };
+      }),
+    );
 
     cart.forEach((item) => {
       if (!item.variation.quantity || item.variation.quantity < item.quatity) {

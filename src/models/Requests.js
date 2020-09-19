@@ -15,23 +15,20 @@ const RequestsSchema = new mongoose.Schema(
     cart: {
       type: [
         {
-          type: {
-            product: {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: 'Products',
-              required: true,
-            },
-            variations: {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: 'Variations',
-              required: true,
-            },
-            quantity: {
-              type: Number,
-              required: true,
-            },
+          product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Products',
+            required: true,
           },
-          required: true,
+          variation: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Variations',
+            required: true,
+          },
+          quantity: {
+            type: Number,
+            required: true,
+          },
         },
       ],
       required: true,

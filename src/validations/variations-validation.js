@@ -62,6 +62,7 @@ export const updateValidation = validate({
       freeShipping: Joi.boolean().optional(),
     }).optional(),
     quantity: Joi.number().optional(),
+    quantityBlock: Joi.number().optional(),
   }),
 });
 

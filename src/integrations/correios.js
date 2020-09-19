@@ -1,7 +1,7 @@
 import Correios from 'node-correios';
 
-import config from '../../config/correios.js';
-import calcBox from '../../helpers/calcBox.js';
+import config from '../config/correios.js';
+import calcBox from '../helpers/calcBox.js';
 
 const correios = new Correios();
 

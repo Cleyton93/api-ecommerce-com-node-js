@@ -92,7 +92,15 @@ class VariationsController {
   async update(req, res, next) {
     const { id: _id } = req.params;
     const { store } = req.query;
-    const { code, name, price, promotion, delivery, quantity } = req.body;
+    const {
+      code,
+      name,
+      price,
+      promotion,
+      delivery,
+      quantity,
+      quantityBlock,
+    } = req.body;
 
     try {
       const variation = await Variations.findOne({ _id, store });
@@ -103,6 +111,7 @@ class VariationsController {
       if (promotion) variation.promotion = promotion;
       if (delivery) variation.delivery = delivery;
       if (quantity) variation.quantity = quantity;
+      if (quantityBlock >= 0) variation.quantityBlock = quantityBlock;
 
       await variation.save();
 

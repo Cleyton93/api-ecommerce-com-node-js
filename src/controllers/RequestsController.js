@@ -31,7 +31,7 @@ class RequestsController {
   // async getAll(req, res, next) {}
   // async getById(req, res, next) {}
   async add(req, res, next) {
-    const { id: _id } = req.payload;
+    const { id: user } = req.payload;
     const { store } = req.query;
     const { cart, payment, delivery } = req.body;
 
@@ -42,7 +42,7 @@ class RequestsController {
     });
 
     try {
-      const client = await Clients.findOne({ _id, store });
+      const client = await Clients.findOne({ user, store });
 
       if (!client)
         return res.status(401).json({ error: 'Cliente não econtrado.' });
@@ -50,10 +50,11 @@ class RequestsController {
       if (!(await cartsValidation(cart)))
         return res.status(422).json({ error: 'Carrinho inválido.' });
 
-      if (!(await availableQuantityValidation(cart)))
+      if (!(await availableQuantityValidation(cart))) {
         return res
           .status(400)
           .json({ error: 'Produto não possui quantidade disponível.' });
+      }
 
       if (!(await checkDeliveryValue(delivery.address.zipcode, cart, delivery)))
         return res.status(400).json({ error: 'Dados de entrega inválidos.' });
@@ -99,6 +100,8 @@ class RequestsController {
 
       await newPayment.save();
       await newDelivery.save();
+      console.log('chegou aqui');
+
       await request.save();
 
       await updateQuantityValidation('salvar_pedido', request);

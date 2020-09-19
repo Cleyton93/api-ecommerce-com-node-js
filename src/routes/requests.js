@@ -5,7 +5,7 @@ import RequestsController from '../controllers/RequestsController.js';
 import auth from '../config/auth.js';
 
 import storeAdminValidation from '../validations/stores-validation.js';
-import * as validate from '../validations/requests-validation.js';
+// import * as validate from '../validations/requests-validation.js';
 
 const router = express.Router();
 const requestsController = new RequestsController();
@@ -58,7 +58,7 @@ const requestsController = new RequestsController();
 //   requestsController.getById,
 // );
 
-router.post('/', auth.required, validate.addValidation, requestsController.add);
+router.post('/', auth.required, requestsController.add);
 
 // router.delete(
 //   '/:id',
