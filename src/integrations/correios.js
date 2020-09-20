@@ -8,7 +8,7 @@ const correios = new Correios();
 const handleProducts = (products) => {
   return products.map((product) => ({
     pesoKg: product.variation.delivery.weightKg,
-    profundidadeCm: product.variation.delivery.dimensions.depthCm,
+    profundidadeCm: product.variation.delivery.dimensions.lengthCm,
     larguraCm: product.variation.delivery.dimensions.widthCm,
     alturaCm: product.variation.delivery.dimensions.heightCm,
     quantidade: product.quantity,

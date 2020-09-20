@@ -6,7 +6,7 @@ export const checkTotalValue = async ({ cart, delivery, payment }) => {
     const cartList = await Promise.all(
       cart.map(async (item) => {
         item.product = await Products.findById(item.product);
-        item.variation = await Variations.findById(item.product);
+        item.variation = await Variations.findById(item.variation);
 
         return item;
       }),

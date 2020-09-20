@@ -62,10 +62,11 @@ class RequestsController {
       if (!(await checkTotalValue({ cart, delivery, payment })))
         return res.status(400).json({ error: 'Dados de pagamento inválidos.' });
 
-      if (!(await checkCard(payment)))
+      if (!checkCard(payment)) {
         return res
           .status(400)
           .json({ error: 'Dados de pagamento com cartão inválidos.' });
+      }
 
       const newPayment = new Payments({
         store,
@@ -100,7 +101,6 @@ class RequestsController {
 
       await newPayment.save();
       await newDelivery.save();
-      console.log('chegou aqui');
 
       await request.save();
 
