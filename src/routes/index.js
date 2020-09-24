@@ -6,6 +6,8 @@ import productsRouter from './products.js';
 import variationsRouter from './variations.js';
 import ratingsRouter from './ratings.js';
 import requestsRouter from './requests.js';
+import deliverysRouter from './deliverys.js';
+import paymentsRouter from './payments.js';
 
 export {
   usersRouter,
@@ -16,4 +18,6 @@ export {
   variationsRouter,
   ratingsRouter,
   requestsRouter,
+  deliverysRouter,
+  paymentsRouter,
 };

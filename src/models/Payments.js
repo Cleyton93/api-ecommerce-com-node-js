@@ -15,6 +15,10 @@ const PaymentsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    parceled: {
+      type: Number,
+      default: 1,
+    },
     address: {
       type: {
         location: {
@@ -62,7 +66,7 @@ const PaymentsSchema = new mongoose.Schema(
           required: true,
         },
         dateOfBirth: {
-          type: String,
+          type: Date,
           required: true,
         },
         cpf: {

@@ -40,6 +40,8 @@ app.use('/produtos', router.productsRouter);
 app.use('/variacoes', router.variationsRouter);
 app.use('/avaliacoes', router.ratingsRouter);
 app.use('/pedidos', router.requestsRouter);
+app.use('/entregas', router.deliverysRouter);
+app.use('/pagamentos', router.paymentsRouter);
 
 // ROUTE 404
 app.use((req, res, next) => {

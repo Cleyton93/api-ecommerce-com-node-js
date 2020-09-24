@@ -1,5 +1,39 @@
+import expressValidation from 'express-validation';
+
 import Products from '../models/Products.js';
 import Variations from '../models/Variations.js';
+
+const { Joi, validate } = expressValidation;
+
+export const getByIdValidation = validate({
+  params: Joi.object({
+    id: Joi.string().alphanum().length(24).required(),
+  }),
+  query: Joi.object({
+    store: Joi.string().alphanum().length(24).required(),
+  }),
+});
+
+export const payValidation = validate({
+  params: Joi.object({
+    id: Joi.string().alphanum().length(24).required(),
+  }),
+  query: Joi.object({
+    store: Joi.string().alphanum().length(24).required(),
+  }),
+  body: Joi.object({
+    senderHash: Joi.string().optional(),
+  }),
+});
+
+export const updateValidation = validate({
+  params: Joi.object({
+    id: Joi.string().alphanum().length(24).required(),
+  }),
+  body: Joi.object({
+    status: Joi.string().optional(),
+  }),
+});
 
 export const checkTotalValue = async ({ cart, delivery, payment }) => {
   try {

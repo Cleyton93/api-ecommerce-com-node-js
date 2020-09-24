@@ -29,6 +29,10 @@ const RequestsSchema = new mongoose.Schema(
             type: Number,
             required: true,
           },
+          unitPrice: {
+            type: Number,
+            required: true,
+          },
         },
       ],
       required: true,
